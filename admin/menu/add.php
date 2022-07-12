@@ -1,3 +1,18 @@
+<?php 
+    include_once "include/menu_function.php";
+    if(isset($_POST['btn'])){
+        $data=$_POST['frm'];
+        add_menu($data);        
+    
+    }
+
+
+?>
+
+
+
+
+
 <div class="container-fluid">
 
                             <div class="row">
@@ -28,17 +43,18 @@
             
                                           
             
+                                            <form method="post">
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">عنوان </label>
                                                 <div class="col-sm-10">
-                                                    <input class="form-control" type="text" value="Artisanal kale" name="frm[title]"
+                                                    <input class="form-control" type="text"  name="frm[title]"
                                                     id="example-text-input">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="example-search-input" class="col-sm-2 col-form-label">آدرس</label>
                                                 <div class="col-sm-10">
-                                                    <input class="form-control" type="text" value="How do I shoot web" name="frm[url]"  id="example-search-input">
+                                                    <input class="form-control" type="text" name="frm[url]"  id="example-search-input">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -51,19 +67,27 @@
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <div class="form-group row">
-                                                <label for="example-url-input" class="col-sm-2 col-form-label">وضعیت</label>
-                                                <div class="col-sm-10">
-                                                    <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input">
+                                                <label for="example-search-input" class="col-sm-2 col-form-label">وضعیت</label>
+                                                <div class="col-sm-10" style="display: flex ;">
+                                                    <input class="form-control" type="radio" name="frm[status]"  id="example-search-input" value="1">مرد
+                                                    <input class="form-control" type="radio" name="frm[status]"  id="example-search-input" value="0">زن
                                                 </div>
+                                                
                                             </div>
+
+                                                
+                                            
                                             <div class="form-group row">
                                                 <label for="example-url-input" class="col-sm-2 col-form-label"></label>
                                                 <div class="col-sm-10">
-                                                    <input class="form-control" type="submit" value="افزودن" name="btn" id="example-url-input">
+                                                    <input class="form-control" type="submit"
+                                                    name="btn" id="example-url-input" style="background-color: darkcyan; color:aliceblue;" value="افزودن">
                                                 </div>
                                             </div>
                                             
+                                            </form>
                                         </div>
                                     </div>
                                 </div> <!-- end col -->

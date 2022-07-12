@@ -91,7 +91,7 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-briefcase"></i> <span> فهرست </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="ui-alerts.html">لیست منوها</a></li>
+                                    <li><a href="index.php?d=menu&p=list">لیست منوها</a></li>
                                     <li><a href="index.php?d=menu&p=add">افزودن منوی جدید</a></li>    
                                 </ul>
                             </li>
