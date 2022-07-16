@@ -11,6 +11,11 @@
         delete_user($id);
     }
 
+    if(isset($_GET['edit'])){
+        header("location:index.php?d=menu&p=edit");
+        
+    }
+
 ?>
 
 
@@ -84,7 +89,7 @@
                                 <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-briefcase"></i> <span> کاربران </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="index.php?d=user&p=list">لیست کاربران</a></li>
-                                    <li><a href="index.php?d=user&p=add">افزودن کاربر جدید</a></li>    
+                                    <li><a href="index.php?d=user&p=add">افزودن کاربر جدید</ a></li>    
                                 </ul>
                             </li>
 

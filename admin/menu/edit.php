@@ -1,26 +1,18 @@
-<?php 
+<?php
     include_once "include/menu_function.php";
-    if(isset($_POST['btn'])){
-        $data=$_POST['frm'];
-        add_menu($data);        
-    
-    }
+    $id=$_GET['id'];
+    $res=edit_menu($id);
 
 
 ?>
 
-
-
-
-
 <div class="container-fluid">
-
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="page-title-box">
                                         <div class="row align-items-center">
                                             <div class="col-md-8">
-                                                <h4 class="page-title m-0">افزودن منو</h4>
+                                                <h4 class="page-title m-0">ویرایش منو</h4>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="float-right d-none d-md-block">
@@ -47,37 +39,27 @@
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">عنوان </label>
                                                 <div class="col-sm-10">
-                                                    <input class="form-control" type="text"  name="frm[title]"
-                                                    id="example-text-input">
+                                                    <input class="form-control" type="text"  name="frm[title]" value="<?php echo $res['title']; ?>" >
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="example-search-input" class="col-sm-2 col-form-label">آدرس</label>
                                                 <div class="col-sm-10">
-                                                    <input class="form-control" type="text" name="frm[url]"  id="example-search-input">
+                                                    <input class="form-control" type="text" value="<?php echo $res['url']; ?>" name="frm[url]"  id="example-search-input">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="example-search-input" class="col-sm-2 col-form-label">ترتیب نمایش</label>
                                                 <div class="col-sm-10">
-                                                    <input class="form-control" type="number" name="frm[sort]"  id="example-search-input">
+                                                    <input class="form-control" type="number" name="frm[sort]" value="<?php echo $res['sort']; ?>" id="example-search-input">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="example-email-input" class="col-sm-2 col-form-label">سرگروه</label>
                                                 <div class="col-sm-10">
                                                     <select class="custom-select" name="frm[parents]">
-                                                        <option value="0">سرگروه</option>
-                                                        <?php
-                                                        $row=list_menu();
-
-                                                        while($rows=mysqli_fetch_assoc($row)){
-                                                            echo "<option value=".$rows['menu_id'].">";
-                                                            echo $rows['title'];
-                                                            echo "</option>";
-                                                        }
+                                                        <option value="0"></option>
                                                         
-                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -85,8 +67,8 @@
                                             <div class="form-group row">
                                                 <label for="example-search-input" class="col-sm-2 col-form-label">وضعیت</label>
                                                 <div class="col-sm-10" style="display: flex ;">
-                                                    <input class="form-control" type="radio" name="frm[status]"  id="example-search-input" value="1">فعال
-                                                    <input class="form-control" type="radio" name="frm[status]"  id="example-search-input" value="0">غیرفعال
+                                                    <input class="form-control" type="radio" name="frm[status]"  id="example-search-input" value="1" <?php if($res['status']==['1']){echo " checked";} ?> >فعال
+                                                    <input class="form-control" type="radio" name="frm[status]"  id="example-search-input" value="0" <?php if($res['status']==['0']){echo " checked";} ?> >غیرفعال
                                                 </div>
                                                 
                                             </div>

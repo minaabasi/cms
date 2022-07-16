@@ -2,6 +2,7 @@
     include_once "include/menu_function.php";
     $result=list_menu();
     
+    
 ?>
 
 <div class="container-fluid">
@@ -37,10 +38,10 @@
                                             <table id="mainTable" class="table table-striped mb-0">
                                                 <thead>
                                                 <tr>
-                                                    <th>نام</th>
-                                                    <th>ایمیل</th>
-                                                    <th>شماره تماس</th>
-                                                    <th>تصویر</th>
+                                                    <th>عنوان</th>
+                                                    <th>آدرس</th>
+                                                    <th>ترتیب نمایش</th>
+                                                    <th>سرگروه</th>
                                                     <th>ویرایش</th>
                                                     <th>حذف</th>
                                                     
@@ -54,17 +55,35 @@
                                                     <td><?php echo $row['url']; ?></td>
                                                     <td><?php echo $row['sort']; ?></td>
                                                     <td>
-                                                        <img src="<?php echo $row['chid']; ?>">
+                                                        <?php
+                                                        if($row['chid']==0){
+                                                            echo 'سرگروه ندارد';
+                                                        }else{
+                                                            $res=chid($row);
+                                                        while($resu=mysqli_fetch_assoc($res)){
+                                                            echo $resu['title'];
+                                                        }
+                                                        }
+
+                                                            
+                                                        ?>
                                                     </td>
-                                                    <!-- <td>
-                                                        <a href="" width="50px">
-                                                        </a>
-                                                    </td> -->
+                                                    
                                                     <td>
-                                                        <a href="index.php?delete=<?php echo $row['user_id']; ?>">
+                                                        <a href="index.php?d=menu&p=edit&id=<?php echo $row['menu_id'];?>">
+                                                        <img src="assets/images/edit.png" width="50px">
+                                                        </a>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        <a href="index.php?delete=<?php echo $row['menu_id']; ?>">
                                                         <img src="assets/images/delete.png" width="50px">
                                                         </a>
                                                     </td>
+
+                                                    
+
+
                                                     </tr>
                                                     <?php } ?>
                                                     
