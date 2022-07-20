@@ -1,3 +1,8 @@
+<?php
+include_once('admin/include/menu_function.php');
+$row=show_menu();
+?>
+
 <!DOCTYPE html>
 <html><!-------Shared free html By Mellatweb.com-->
 <head>
@@ -22,8 +27,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
-<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
 
 <body>
@@ -89,33 +92,32 @@
 						</div>
 						
 						<div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-							<ul class="navigation clearfix">
-								<li class="current dropdown"><a href="#">Home</a>
+						<ul class="navigation clearfix" >
+
+                            <?php foreach($row as $rows){ ?>
+								<li class="current dropdown"><a href="<?php echo $rows['url']; ?>"><?php echo $rows['title']; ?></a>
 									<ul>
-										<li><a href="index.html">Home Page 01</a></li>
-										<li><a href="index-2.html">Home Page 02</a></li>
-										<li><a href="index-3.html">Home Page 03</a></li>
-										<li class="dropdown"><a href="#">Header Styles</a>
-											<ul>
-												<li><a href="index.html">Header Style 01</a></li>
-												<li><a href="index-2.html">Header Style 02</a></li>
-												<li><a href="index-3.html">Header Style 03</a></li>
-											</ul>
-										</li>
+
+                                        <?php 
+                                        $id=$rows['menu_id'];
+                                        $res=show_submenu($id);
+                                        if($res){
+                                            foreach($res as $value){ ?>
+                                                <li class="dropdown"><a href="<?php echo $value['url']; ?>"><?php echo $value['title']; ?></a>
+                                                    <ul>
+                                                        <li><a href="index.html">Header Style 01</a></li>
+                                                        <li><a href="index-2.html">Header Style 02</a></li>
+                                                        <li><a href="index-3.html">Header Style 03</a></li>
+                                                    </ul>
+                                                </li>
+                                                <?php } }?>
+                                            
 									</ul>
+                                    
 								</li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Services</a></li>
-								<li><a href="#">Portfolio</a></li>
-								<li class="dropdown"><a href="#">News</a>
-									<ul>
-										<li><a href="blog.html">Our Blog</a></li>
-										<li><a href="blog-classic.html">Blog Classic</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-									</ul>
-								</li>
-								<li><a href="contact.html">Contact us</a></li>
-							</ul>
+                                <?php }?>
+								
+						</ul>
 						</div>
 					</nav>
 					
@@ -170,33 +172,29 @@
         <div class="hidden-bar-wrapper">
             <!-- .Side-menu -->
             <div class="side-menu">
-            	<ul class="navigation clearfix">
-					<li class="current dropdown"><a href="#">Home</a>
-						<ul>
-							<li><a href="index.html">Home Page 01</a></li>
-							<li><a href="index-2.html">Home Page 02</a></li>
-							<li><a href="index-3.html">Home Page 03</a></li>
-							<li class="dropdown"><a href="#">Header Styles</a>
-								<ul>
-									<li><a href="index.html">Header Style 01</a></li>
-									<li><a href="index-2.html">Header Style 02</a></li>
-									<li><a href="index-3.html">Header Style 03</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Services</a></li>
-					<li><a href="#">Portfolio</a></li>
-					<li class="dropdown"><a href="#">News</a>
-						<ul>
-							<li><a href="blog.html">Our Blog</a></li>
-							<li><a href="blog-classic.html">Blog Classic</a></li>
-							<li><a href="blog-single.html">Blog Single</a></li>
-						</ul>
-					</li>
-					<li><a href="contact.html">Contact us</a></li>
-				</ul>
+            <ul class="navigation clearfix" >
+
+<?php foreach($row as $rows){ ?>
+    <li class="current dropdown"><a href="<?php echo $rows['url']; ?>"><?php echo $rows['title']; ?></a>
+        <ul>
+
+            <?php 
+            $id=$rows['menu_id'];
+            $res=show_submenu($id);
+            foreach($res as $value){ ?>
+            <li class="dropdown"><a href="<?php echo $value['url']; ?>"><?php echo $value['title']; ?></a>
+                <ul>
+                    <li><a href="index.html">Header Style 01</a></li>
+                    <li><a href="index-2.html">Header Style 02</a></li>
+                    <li><a href="index-3.html">Header Style 03</a></li>
+                </ul>
+            </li>
+            <?php }?>
+        </ul>
+    </li>
+    <?php }?>
+    
+</ul>
             </div>
             <!-- /.Side-menu -->
 			

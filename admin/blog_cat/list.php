@@ -1,6 +1,7 @@
 <?php
-    include_once "include/user_function.php";
-    $result=user_list();
+    include_once('include/blog_cat_function.php');
+    $result=list_cat();
+    
     
 ?>
 
@@ -11,11 +12,16 @@
                                     <div class="page-title-box">
                                         <div class="row align-items-center">
                                             <div class="col-md-8">
-                                                <h4 class="page-title m-0">لیست کاربران</h4>
+                                                <h4 class="page-title m-0">دسته بندی مقالات</h4>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="float-right d-none d-md-block">
-                                                    
+                                                    <div class="dropdown">
+                                                        <a href="index.php?d=blog_cat&p=add" class="btn btn-primary" aria-haspopup="true" aria-expanded="false">
+                                                            افزودن دسته جدید
+                                                        </a>
+                                                       
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- end col -->
@@ -37,10 +43,9 @@
                                             <table id="mainTable" class="table table-striped mb-0">
                                                 <thead>
                                                 <tr>
-                                                    <th>نام</th>
-                                                    <th>ایمیل</th>
-                                                    <th>شماره تماس</th>
-                                                    <th>تصویر</th>
+                                                    <th>عنوان</th>
+                                                    <th>ترتیب نمایش</th>
+                                                    <th>وضعیت</th>
                                                     <th>ویرایش</th>
                                                     <th>حذف</th>
                                                     
@@ -50,22 +55,26 @@
                                                 
                                                     <?php while($row=mysqli_fetch_assoc($result)){ ?>
                                                 <tr>
-                                                    <td><?php echo $row['fullname']; ?></td>
-                                                    <td><?php echo $row['email']; ?></td>
-                                                    <td><?php echo $row['phone_number']; ?></td>
+                                                    <td><?php echo $row['title']; ?></td>
+                                                    <td><?php echo $row['sort']; ?></td>
+                                                    <td><?php echo $row['status']; ?></td>
+                                                    
+                                                    
                                                     <td>
-                                                        <img src="<?php echo $row['pic']; ?>">
-                                                    </td>
-                                                    <td>
-                                                        <a href="index.php?d=user&p=edit&a=<?php echo $row['user_id']; ?>" >
+                                                        <a href="index.php?d=blog_cat&p=edit&id=<?php echo $row['blog_cat_id'];?>">
                                                         <img src="assets/images/edit.png" width="50px">
                                                         </a>
                                                     </td>
+                                                    
                                                     <td>
-                                                        <a href="index.php?udelete=<?php echo $row['user_id']; ?>">
+                                                        <a href="index.php?d=blog_cat&p=delete&id=<?php echo $row['blog_cat_id']; ?>">
                                                         <img src="assets/images/delete.png" width="50px">
                                                         </a>
                                                     </td>
+
+                                                    
+
+
                                                     </tr>
                                                     <?php } ?>
                                                     
@@ -81,3 +90,4 @@
                             </div> <!-- end row -->            
 
                         </div>
+                        

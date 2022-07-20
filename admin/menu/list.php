@@ -76,7 +76,7 @@
                                                     </td>
                                                     
                                                     <td>
-                                                        <a href="index.php?delete=<?php echo $row['menu_id']; ?>">
+                                                        <a href="index.php?mdelete=<?php echo $row['menu_id']; ?>">
                                                         <img src="assets/images/delete.png" width="50px">
                                                         </a>
                                                     </td>

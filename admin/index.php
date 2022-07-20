@@ -1,19 +1,24 @@
 <?php
     include_once('include/user_function.php');
+    include_once('include/menu_function.php');
     check_login();
 
     if(isset($_GET['logout'])){
         user_logout();
     }
 
-    if(isset($_GET['delete'])){
-        $id=$_GET['delete'];
+    if(isset($_GET['udelete'])){
+        $id=$_GET['udelete'];
         delete_user($id);
+    }
+    if(isset($_GET['mdelete'])){
+        $id=$_GET['mdelete'];
+        delete_menu($id);
+        header("location:index.php?d=menu&p=list");
     }
 
     if(isset($_GET['edit'])){
-        header("location:index.php?d=menu&p=edit");
-        
+        header("location:index.php?d=menu&p=edit");        
     }
 
 ?>
@@ -84,20 +89,30 @@
                                     <span> خانه <span class="badge badge-success badge-pill float-right">3</span></span>
                                 </a>
                             </li>
-
                             <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-briefcase"></i> <span> کاربران </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-rocket"></i> <span> کاربران</span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="index.php?d=user&p=list">لیست کاربران</a></li>
-                                    <li><a href="index.php?d=user&p=add">افزودن کاربر جدید</ a></li>    
+                                    <li><a href="index.php?d=user&p=add">افزودن کاربر</a></li>
                                 </ul>
                             </li>
+
+                        
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-briefcase"></i> <span> فهرست </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="index.php?d=menu&p=list">لیست منوها</a></li>
                                     <li><a href="index.php?d=menu&p=add">افزودن منوی جدید</a></li>    
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-briefcase"></i> <span> بلاگ </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="index.php?d=blog&p=list">لیست مقالات</a></li>
+                                    <li><a href="index.php?d=blog_cat&p=list">دسته بندی مقالات</a></li>
+                                    <li><a href="index.php?d=blog&p=add">افزودن مقاله جدید</a></li>    
                                 </ul>
                             </li>
 
